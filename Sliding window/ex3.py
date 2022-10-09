@@ -4,9 +4,9 @@
 # with all distinct characters
 # ------------------------------ Solution -----------------------------
 
-
+def findLongestSubstring(str): 
         
-    
+    return str
     
 
 # ------------------------------ Test cases -----------------------------
