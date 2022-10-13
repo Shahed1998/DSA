@@ -4,13 +4,28 @@
 # with all distinct characters
 # ------------------------------ Solution -----------------------------
 
-def findLongestSubstring(str): 
+def findLongestSubstring(s): 
         
-    return str
+    charSet = set()
+    left = 0
+    res = 0
+
+    for right in range(len(s)):
+        while s[right] in charSet:
+            charSet.remove(s[left])
+            left += 1 
+        
+        charSet.add(s[right])
+        res = max(res, right-left+1)
+
+    return res
+
+
+    
     
 
 # ------------------------------ Test cases -----------------------------
-# print(findLongestSubstring('')) # 0
+print(findLongestSubstring("pwwkew")) # 0
 # print(findLongestSubstring('rithmschool')) # 7
 # print(findLongestSubstring('thisisawesome')) # 6
 # print(findLongestSubstring('thecatinthehat')) # 7
