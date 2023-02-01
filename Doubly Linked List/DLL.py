@@ -38,7 +38,19 @@ class DLL:
         self.length -= 1
         return self
           
-
+    def shift(self):
+        if self.length == 0: return None
+        elif self.length == 1:
+            self.length -= 1
+            self.head = None
+            self.tail = None
+        else:
+            oldHead = self.head
+            self.head = oldHead.next
+            oldHead.next = None
+            self.head.prev = None
+            self.length -= 1
+        return self
 
 
 dll = DLL()
@@ -54,3 +66,9 @@ dll = DLL()
 # dll.push(4)
 # dll.push(5)
 # print(dll.pop())
+
+# --------------- Shift test cases ---------------
+# dll.shift()
+# dll.shift()
+# dll.shift()
+# print(dll.head)
