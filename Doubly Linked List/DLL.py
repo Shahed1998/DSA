@@ -52,6 +52,36 @@ class DLL:
             self.length -= 1
         return self
 
+    def unshift(self, val):
+        newNode = Node(val)
+        if(self.head==None and self.tail==None): self.head = self.tail = newNode
+        else:
+            tempHead=self.head
+            newNode.next=tempHead
+            self.head.prev=newNode
+            self.head=newNode
+        self.length += 1
+        return self
+
+    def get(self, index):
+        if(self.length <= 0 or index >= self.length or index < 0): return None
+        mid = self.length // 2
+        if index <= mid:
+            temp = self.head
+            for i in range(0, index+1, +1):
+                if i == index: return temp
+                temp = temp.next 
+        elif index > mid:
+            temp = self.tail
+            for i in range(self.length-1, index-1, -1):
+                if i == index: return temp
+                temp = temp.prev
+
+    def set(self, index, val):
+        node = self.get(index)
+        node.val = val
+        return self
+        
 
 dll = DLL()
 
@@ -72,3 +102,27 @@ dll = DLL()
 # dll.shift()
 # dll.shift()
 # print(dll.head)
+
+# --------------- UnShift test cases ---------------
+# print(dll.unshift(5).head.val)
+# print(dll.unshift(6).head.val)
+# print(dll.unshift(7).head.val)
+# print(dll.length)
+
+# --------------- Get test cases ---------------
+# dll.push("hi")
+# dll.push("there")
+# dll.push("omi")
+# dll.push("3")
+# dll.push("4")
+# dll.push("5")
+# dll.push("6")
+# print(dll.get(0))
+
+# --------------- Set test cases ---------------
+# dll.push("hi")
+# dll.push("there")
+# dll.push("omi")
+# print("previously:", dll.get(2).val)
+# dll.set(2, "!")
+# print("later:", dll.get(2).val)
