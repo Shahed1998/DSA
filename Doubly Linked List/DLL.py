@@ -81,6 +81,42 @@ class DLL:
         node = self.get(index)
         node.val = val
         return self
+
+    def insert(self, index, val):
+        if index < 0 or index > self.length: return None
+        elif index == 0: self.unshift(val)
+        elif index == self.length: self.push(val)
+        else:
+            node = Node(val)
+            oldPrevNode = self.get(index-1)
+            oldNextNode = oldPrevNode.next
+            node.prev = oldPrevNode
+            node.next = oldPrevNode.next
+            oldPrevNode.next = node
+            oldNextNode.prev = node
+            self.length += 1
+        return self 
+
+    def remove(self, index):
+        if index < 0 or index >= self.length: return None
+        elif index == 0: return self.shift()
+        elif index == self.length-1: return self.pop()
+        else:
+            prevNode = self.get(index-1)
+            remNode = prevNode.next
+            prevNode.next = remNode.next
+            remNode.prev = None
+            remNode.next = None
+            self.length -= 1
+
+
+    def traverse(self):
+        if self.length == 0: return None
+        else:
+            current = self.head
+            while(current):
+                print(current.val)
+                current = current.next
         
 
 dll = DLL()
@@ -126,3 +162,23 @@ dll = DLL()
 # print("previously:", dll.get(2).val)
 # dll.set(2, "!")
 # print("later:", dll.get(2).val)
+
+# --------------- Insert test cases ---------------
+# dll.push("A")
+# dll.push("B")
+# dll.push("C")
+# dll.push("E")
+# print(dll.length)
+# dll.insert(3, "D")
+# print(dll.length)
+# dll.traverse()
+
+# --------------- Remove test cases ---------------
+# dll.push("A")
+# dll.push("B")
+# dll.push("C")
+# dll.push("D")
+# dll.traverse()
+# print("------------------------------------------------")
+# dll.remove(1)
+# dll.traverse()
