@@ -55,22 +55,48 @@ class DoublyLinkedList {
   }
   pop() {
     return undefined;
-    if (this.head === null) {
-      return null;
-    } else if (this.length === 1) {
-      this.head = null;
-      this.tail = null;
-    } else {
-      var oldTail = this.tail;
-      this.tail = this.tail.prev;
-      console.log(this.tail);
-      //   this.tail.next = null;
-      //   oldTail.prev = null;
-      //   oldTail.next = null;
-    }
-    this.length--;
-    return this;
   }
+  get(index) {
+    if (this.length <= 0 || index >= this.length || index < 0) {
+      return null;
+    }
+    var mid = Math.floor(this.length / 2);
+    if (index <= mid) {
+      var current = this.head;
+      for (let i = 0; i < index + 1; i++) {
+        if (i === index) {
+          return current;
+        }
+        current = current.next;
+      }
+    } else if (index > mid) {
+      var current = this.tail;
+      for (let i = this.length - 1; index - 1; i--) {
+        if (i === index) {
+          return current;
+        }
+        current = current.prev;
+      }
+    }
+  }
+  set(index, value) {
+    var node = this.get(index);
+    if (node === false) {
+      return false;
+    }
+    node.val = value;
+    return true;
+  }
+  remove() {}
+  pop() {}
 }
 
 // ------------------------------- Test cases
+// var doublyLinkedList = new DoublyLinkedList();
+
+// doublyLinkedList.push(5).push(10).push(15).push(20);
+// doublyLinkedList.get(0).val; // 5
+// doublyLinkedList.get(1).val; // 10
+// doublyLinkedList.get(2).val; // 15
+// doublyLinkedList.get(3).val; // 20
+// console.log(doublyLinkedList.get(4)); // null
