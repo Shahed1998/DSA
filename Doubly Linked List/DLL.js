@@ -87,16 +87,48 @@ class DoublyLinkedList {
     node.val = value;
     return true;
   }
-  remove() {}
-  pop() {}
+  remove(index) {
+    if (index < 0 || index >= this.length) {
+      return undefined;
+    } else if (index === 0) {
+      return this.shift();
+    } else if (index === this.length - 1) {
+      return this.pop();
+    } else {
+      var prevNode = this.get(index - 1);
+      var remNode = prevNode.next;
+      prevNode.next = remNode.next;
+      remNode.prev = null;
+      remNode.next = null;
+      this.length--;
+      return remNode;
+    }
+  }
+  pop() {
+    if (this.length === 0) {
+      return undefined;
+    } else if (this.length === 1) {
+      this.length--;
+      return this.head;
+    } else {
+      var oldTail = this.tail;
+      this.tail = oldTail.prev;
+      this.tail.next = null;
+      oldTail.next = null;
+      oldTail.prev = null;
+      this.length--;
+      return oldTail;
+    }
+  }
+  reverse() {}
 }
 
 // ------------------------------- Test cases
-// var doublyLinkedList = new DoublyLinkedList();
-
-// doublyLinkedList.push(5).push(10).push(15).push(20);
-// doublyLinkedList.get(0).val; // 5
-// doublyLinkedList.get(1).val; // 10
-// doublyLinkedList.get(2).val; // 15
-// doublyLinkedList.get(3).val; // 20
-// console.log(doublyLinkedList.get(4)); // null
+let doublyLinkedList = new DoublyLinkedList();
+doublyLinkedList.push(5).push(10).push(15).push(20);
+doublyLinkedList.reverse(); // singlyLinkedList;
+doublyLinkedList.length; // 4
+doublyLinkedList.head.val; // 20
+console.log(doublyLinkedList.head.next.val); // 15
+// doublyLinkedList.head.next.next.val; // 10
+// doublyLinkedList.head.next.next.next.val; // 5
