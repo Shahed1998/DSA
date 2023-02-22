@@ -140,15 +140,28 @@ class DoublyLinkedList {
       return oldTail;
     }
   }
-  reverse() {}
+  reverse() {
+    var current = this.head;
+    while (current) {
+      var prev = current.prev;
+      var next = current.next;
+      current.prev = next;
+      current.next = prev;
+      current = current.prev;
+    }
+    var oldHead = this.head;
+    this.head = this.tail;
+    this.tail = oldHead;
+    return this;
+  }
 }
 
 // ------------------------------- Test cases
-let doublyLinkedList = new DoublyLinkedList();
-doublyLinkedList.push(5).push(10).push(15).push(20);
-doublyLinkedList.reverse(); // singlyLinkedList;
-doublyLinkedList.length; // 4
-doublyLinkedList.head.val; // 20
-doublyLinkedList.head.next.val; // 15
-doublyLinkedList.head.next.next.val; // 10
-doublyLinkedList.head.next.next.next.val; // 5
+// let doublyLinkedList = new DoublyLinkedList();
+// doublyLinkedList.push(5).push(10).push(15).push(20);
+// doublyLinkedList.reverse(); // singlyLinkedList;
+// doublyLinkedList.length; // 4
+// doublyLinkedList.head.val; // 20
+// doublyLinkedList.head.next.val; // 15
+// doublyLinkedList.head.next.next.val; // 10
+// console.log(doublyLinkedList.head.next.next.next.val); // 5
