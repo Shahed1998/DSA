@@ -42,6 +42,21 @@ class BST:
             elif(val < current.value):
                 current = current.left
         return None
+    
+    # Breadth First Search
+    # Traverse the nodes horizontally
+    def BFS(self):
+        if(self.root == None):
+            return None
+        queue = []
+        data  = []
+        queue.append(self.root)
+        while(len(queue) > 0):
+            deq = queue.pop(0)
+            data.append(deq.value)
+            if(deq.left): queue.append(deq.left)
+            if(deq.right): queue.append(deq.right)
+        return data
 
 bst = BST()
 bst.insert(4)
@@ -51,4 +66,4 @@ bst.insert(1)
 bst.insert(3)
 bst.insert(5)
 bst.insert(7)
-print(bst.search(2).value)
+print(bst.BFS())
