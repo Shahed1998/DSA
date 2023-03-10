@@ -28,10 +28,27 @@ class BST:
                 elif (val < current.value):
                     current = current.left        
         return self
+    
+    # apply BST find
+    def search(self, val):
+        if(self.root == None):
+            return None
+        current = self.root
+        while(current):
+            if(current.value == val):
+                return current
+            elif(val > current.value):
+                current = current.right
+            elif(val < current.value):
+                current = current.left
+        return None
 
-# bst = BST()
-# bst.insert(1)
-# # bst.insert(2)
-# # bst.insert(4)
-# # bst.insert(0)
-# print(bst.root.value)
+bst = BST()
+bst.insert(4)
+bst.insert(2)
+bst.insert(6)
+bst.insert(1)
+bst.insert(3)
+bst.insert(5)
+bst.insert(7)
+print(bst.search(2).value)
