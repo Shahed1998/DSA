@@ -57,6 +57,39 @@ class BST:
             if(deq.left): queue.append(deq.left)
             if(deq.right): queue.append(deq.right)
         return data
+    
+    # Pre-order traversal
+    def PreOrder(self):
+        traversed = []
+        current = self.root
+        def helper(node):
+            traversed.append(node.value)
+            if(node.left): helper(node.left)
+            if(node.right): helper(node.right)
+        helper(current)
+        return traversed
+    
+    # Post-order traversal
+    def PostOrder(self):
+        traversed = []
+        current = self.root
+        def helper(node):
+            if(node.left): helper(node.left)
+            if(node.right): helper(node.right)
+            traversed.append(node.value)
+        helper(current)
+        return traversed
+    
+    # In order traversal
+    def InOrder(self):
+        traversed = []
+        current = self.root
+        def helper(node):
+            if(node.left): helper(node.left)
+            traversed.append(node.value)
+            if(node.right): helper(node.right)
+        helper(current)
+        return traversed
 
 bst = BST()
 bst.insert(4)
@@ -66,4 +99,4 @@ bst.insert(1)
 bst.insert(3)
 bst.insert(5)
 bst.insert(7)
-print(bst.BFS())
+print(bst.InOrder())
