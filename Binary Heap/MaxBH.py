@@ -5,6 +5,9 @@ class MaxBinaryHeap:
     # Insertion using the bubble up technique
     def insert(self, element):
         self.values.append(element)
+        self.bubbleUp()
+
+    def bubbleUp(self):
         cIdx = len(self.values) - 1
         while(cIdx > 0):
             pIdx = (cIdx-1)//2
@@ -13,6 +16,10 @@ class MaxBinaryHeap:
             self.values[pIdx] = self.values[cIdx]
             self.values[cIdx] = temp
             cIdx = pIdx
+    
+    def extractMax(self):
+        return self
+
         
 
 mbh = MaxBinaryHeap()
