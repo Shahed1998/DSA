@@ -18,47 +18,43 @@ class MaxBinaryHeap:
             cIdx = pIdx
     
     def extractMax(self):
-        swap = self.values.pop()
         ret = self.values[0]
-        self.values[0] = swap
-        print(self.values)
-        self.bubbleDown()
-        print(self.values)
+        end = self.values.pop()
+        if len(self.values) > 0:
+            self.values[0] = end
+            self.bubbleDown()
         return ret
     
     def bubbleDown(self):
-        swap = 0
-        while(swap < len(self.values)/2-1):
-            lci = 2*swap+1 # lci = left child index
-            rci = 2*swap+2 # rci = right child index
-            swapVal = self.values[swap]
-            leftVal = self.values[lci]
-            rightVal = self.values[rci]
-            if swapVal < leftVal and swapVal < rightVal:
-                if leftVal < rightVal:
-                    self.values[swap] = rightVal
-                    self.values[rci] = swapVal
-                    swap = rci
-                elif leftVal > rightVal:
-                    self.values[swap] = leftVal
-                    self.values[lci] = swapVal
-                    swap = lci
-            elif swapVal < leftVal:
-                self.values[swap] = leftVal
-                self.values[lci] = swapVal
-                swap = lci
-            elif swapVal < rightVal:
-                self.values[swap] = rightVal
-                self.values[rci] = swapVal
-                swap = rci
+        idx = 0
+        while True:
+            leftChildIdx  = 2 * idx + 1
+            rightChildIdx = 2 * idx + 2
+            leftChildVal = 0; rightChildVal = 0
+            parentVal = self.values[idx]
+            swap = None
+            if leftChildIdx < len(self.values):
+                leftChildVal  = self.values[leftChildIdx]
+                if parentVal < leftChildVal: swap = leftChildIdx
+            if rightChildIdx < len(self.values):
+                rightChildVal = self.values[rightChildIdx]
+                if leftChildVal < rightChildVal: swap = rightChildIdx
+                elif leftChildVal > rightChildVal: swap = leftChildIdx
+            if swap == None: break
+            self.values[idx] = self.values[swap]
+            self.values[swap] = parentVal
+            idx = swap
+            swap = None
+
 
 mbh = MaxBinaryHeap()
 mbh.insert(55)
 mbh.insert(39)
-mbh.insert(33)
+mbh.insert(41)
 mbh.insert(18)
 mbh.insert(27)
 mbh.insert(12)
-# mbh.insert(55)
+print("After insertion:", mbh.values)
 print(mbh.extractMax())
+print("After extracting max:", mbh.values)
 
