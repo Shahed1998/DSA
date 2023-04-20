@@ -30,11 +30,26 @@ class PriorityQueue:
                 idx = pIdx
             else: break
 
+    def dequeue(self):
+        if len(self.values) == 0: return None
+        if len(self.values) == 1: return self.values.pop(0).value
+        return self.bubbleDown()
+        
+    def bubbleDown(self):
+        idx = len(self.values)-1 # last index
+        ret = self.values[0].value
+        self.values[0] = self.values[idx]
+        self.values.pop()
+        # To be continued
+        return ret
+
+
 pq = PriorityQueue()
 pq.enqueue(5,5)
 pq.enqueue(3,3)
 pq.enqueue(4,4)
-pq.enqueue(1,1)
-pq.enqueue(2,2)
-pq.enqueue(100,100)
-pq.enqueue(0,0)
+# pq.enqueue(1,1)
+# pq.enqueue(2,2)
+# pq.enqueue(100,100)
+# pq.enqueue(0,0)
+print(pq.dequeue())
