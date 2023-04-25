@@ -9,14 +9,9 @@ class PriorityQueue:
     
     def enqueue(self, value, priority):
         node = Node(value, priority)
-        valueList = []
         self.values.append(node)
         if(len(self.values)>1):
             self.bubbleUp()
-        for nd in self.values:
-            valueList.append(nd.value)
-        print(valueList)
-        return valueList
 
     def bubbleUp(self):
         idx = len(self.values)-1
@@ -40,16 +35,61 @@ class PriorityQueue:
         ret = self.values[0].value
         self.values[0] = self.values[idx]
         self.values.pop()
-        # To be continued
+        idx = 0
+        while True:
+            left = 2*idx+1
+            right = 2*idx+2
+            currentNode = self.values[idx]
+            currentPriority = self.values[idx].priority
+            swap = 0
+
+            if left < len(self.values):
+                leftPriority = self.values[left].priority   
+                if currentPriority > leftPriority: swap = left
+                    
+            if right < len(self.values):
+                rightPriority = self.values[right].priority
+                if leftPriority > rightPriority: swap = right
+
+            if swap == 0: break
+
+            self.values[idx] = self.values[swap]
+            self.values[swap] = currentNode
+            idx = swap
+
         return ret
+    
+    def printQueue(self):
+        valueList = []
+        for nd in self.values:
+            valueList.append(nd.value)
+        print(valueList)
 
 
-pq = PriorityQueue()
-pq.enqueue(5,5)
-pq.enqueue(3,3)
-pq.enqueue(4,4)
+
+# Test cases
+# pq = PriorityQueue()
+# pq.enqueue(5,5)
+# pq.enqueue(3,3)
+# pq.enqueue(4,4)
 # pq.enqueue(1,1)
 # pq.enqueue(2,2)
 # pq.enqueue(100,100)
 # pq.enqueue(0,0)
-print(pq.dequeue())
+# pq.printQueue()
+# pq.dequeue()
+# pq.printQueue()
+# pq.dequeue()
+# pq.printQueue()
+# pq.dequeue()
+# pq.printQueue()
+# pq.dequeue()
+# pq.printQueue()
+# pq.dequeue()
+# pq.printQueue()
+# pq.dequeue()
+# pq.printQueue()
+# pq.dequeue()
+# pq.printQueue()
+# pq.dequeue()
+# pq.printQueue()
