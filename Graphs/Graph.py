@@ -69,11 +69,11 @@ class Graph:
             dll = DLL()
             self.adjacencyList[vertex] = dll
 
-    def checkValidVertex(self, vertex1, vertex2):
+    def checkValidVertex(self, vertex1=None, vertex2=None):
         # checks for invalid vertex in adjacencyList
-        if vertex1 not in self.adjacencyList:
+        if (not vertex1 == None) and (vertex1 not in self.adjacencyList):
             raise Exception(f"Invalid vertex {vertex1}")
-        elif vertex2 not in self.adjacencyList:
+        elif (not vertex2 == None) and (vertex2 not in self.adjacencyList):
             raise Exception(f"Invalid vertex {vertex2}")
 
     def addEdge(self, vertex1, vertex2):
@@ -82,7 +82,7 @@ class Graph:
         self.adjacencyList[vertex2].push(vertex1)
 
     def removeEdge(self, vertex1, vertex2):
-        self.checkValidVertex(vertex1, vertex2)
+        self.checkValidVertex(vertex1)
         rm1 = self.adjacencyList[vertex1].remove(vertex2)
         rm2 = self.adjacencyList[vertex2].remove(vertex1)
         if not (rm1 and rm2):
@@ -90,6 +90,13 @@ class Graph:
         return "Connection severed"
 
     # Task: Remove vertex
+    def removeVertex(self, vertex):
+        self.checkValidVertex(vertex)
+        del self.adjacencyList[vertex]  # Removing vertex from the dictionary
+        for key, value in self.adjacencyList.items():
+            value.remove(vertex)
+        return self.adjacencyList
+
 
 # ------------------------------------------
 # Test cases
@@ -106,6 +113,8 @@ class Graph:
 # g.addEdge("Tokyo", "Newfoundland")
 # g.addEdge("Dhaka", "Newfoundland")
 # g.addEdge("Dhaka", "Chittagong")
+
+# print(g.removeVertex("Chittagong")['Dhaka'].head.next.next)
 
 # print(g.removeEdge("Tokyo", "Newfoundland"))
 # print(g.adjacencyList["Newfoundland"].head.value)
