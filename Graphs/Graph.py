@@ -145,3 +145,25 @@ class Graph:
 # print(dll.tail.prev.prev.value)
 # print(dll.tail.prev.prev.prev.value)
 # print(dll.tail.prev.prev.prev.prev)
+
+# ------------------------------------------
+# Graph Traversal Test Cases
+# ------------------------------------------
+g = Graph()
+
+g.addVertex("A")
+g.addVertex("B")
+g.addVertex("C")
+g.addVertex("D")
+g.addVertex("E")
+g.addVertex("F")
+
+g.addEdge("A", "B")
+g.addEdge("A", "C")
+g.addEdge("B", "D")
+g.addEdge("C", "E")
+g.addEdge("D", "E")
+g.addEdge("D", "F")
+g.addEdge("E", "F")
+
+print(g.adjacencyList['E'].head.next.value)
