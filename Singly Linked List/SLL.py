@@ -4,6 +4,7 @@ class Node:
         self.val = val
         self.next = None
 
+
 class SinglyLinkedList:
 
     def __init__(self):
@@ -14,27 +15,28 @@ class SinglyLinkedList:
     # push
     def push(self, val):
         newNode = Node(val)
-        if not self.head: 
+        if not self.head:
             self.head = newNode
             self.tail = self.head
         else:
             self.tail.next = newNode
             self.tail = newNode
-        
+
         self.length += 1
         return self
 
     # traverse a linked list
     def traverse(self):
         currentValue = self.head
-        while(currentValue):
+        while (currentValue):
             print(currentValue.val)
             currentValue = currentValue.next
-        return None 
+        return None
 
     # pop from a linked list
     def pop(self):
-        if not self.head: return None
+        if not self.head:
+            return None
         current = self.head
         newTail = current
         while current.next:
@@ -43,26 +45,27 @@ class SinglyLinkedList:
         self.tail = newTail
         self.tail.next = None
         self.length -= 1
-        if(self.length == 0):
+        if (self.length == 0):
             self.head = None
             self.tail = None
         return current.val
 
     # remove item from the front of a linked list
     def shift(self):
-        if not self.head: return None
+        if not self.head:
+            return None
         current = self.head
         if not current.next:
             self.head = None
             self.tail = None
             self.length -= 1
-            return current    
+            return current
         self.head = current.next
         self.length -= 1
         return current
 
     # add node at the beginning of the list
-    def unShift(self,val):
+    def unShift(self, val):
         if not self.head:
             self.push(val)
         else:
@@ -74,18 +77,19 @@ class SinglyLinkedList:
 
     # Get the element at the specific index of the linked list
     def get(self, index):
-        if index < 0 or index >= self.length: return None
+        if index < 0 or index >= self.length:
+            return None
         currentNode = self.head
         currentIndex = 0
-        while(currentIndex < index):
+        while (currentIndex < index):
             currentNode = currentNode.next
             currentIndex += 1
         return currentNode
 
-    # Set 
+    # Set
     def set(self, index, value):
         nd = self.get(index)
-        if nd: 
+        if nd:
             nd.val = value
             return self
         return None
@@ -93,11 +97,14 @@ class SinglyLinkedList:
     # Insert
     def insert(self, index, value):
 
-        if index > self.length or index < 0: return False
+        if index > self.length or index < 0:
+            return False
 
-        elif index == self.length: self.push(value)
+        elif index == self.length:
+            self.push(value)
 
-        elif index == 0: self.unShift(value)
+        elif index == 0:
+            self.unShift(value)
 
         else:
 
@@ -118,13 +125,15 @@ class SinglyLinkedList:
     # Remove
     def remove(self, index):
 
-        if (index >= self.length or index < 0): return None
+        if (index >= self.length or index < 0):
+            return None
 
-        elif (index == 0): return self.shift()
+        elif (index == 0):
+            return self.shift()
 
         else:
 
-            prev = self.get(index -1)
+            prev = self.get(index - 1)
 
             rem = prev.next
 
@@ -136,29 +145,27 @@ class SinglyLinkedList:
 
         print("--------------------")
 
-        return self  
+        return self
 
     # Reverse
 
     def reverse(self):
 
-        #converting head to tail
+        # converting head to tail
         newTail = self.head
         oldTail = self.tail
         self.head = self.head.next
         newTail.next = None
         oldTail.next = newTail
 
-
         for i in range(self.length-2):
             newTailPtr = oldTail.next
             oldTail.next = self.head
-            newHeadPtr = self.head.next
-            self.head = newHeadPtr
+            self.head = self.head.next
             oldTail.next.next = newTailPtr
 
         self.traverse()
-        
+
 
 # --------------------------------- Test cases ---------------------------------
 sll = SinglyLinkedList()
@@ -173,8 +180,10 @@ sll.push("e")
 
 # TRAVERSE OPERATION
 
-sll.traverse()
 
+sll.traverse()
 print("--------------------")
+# print(sll.get(4).val)
+
 
 sll.reverse()
