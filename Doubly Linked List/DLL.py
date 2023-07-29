@@ -5,6 +5,7 @@ class Node:
         self.val = val
         self.next = None
 
+
 class DLL:
 
     def __init__(self):
@@ -37,9 +38,10 @@ class DLL:
             oldTail.prev = None
         self.length -= 1
         return self
-          
+
     def shift(self):
-        if self.length == 0: return None
+        if self.length == 0:
+            return None
         elif self.length == 1:
             self.length -= 1
             self.head = None
@@ -54,27 +56,30 @@ class DLL:
 
     def unshift(self, val):
         newNode = Node(val)
-        if(self.head==None and self.tail==None): self.head = self.tail = newNode
+        if (self.head == None and self.tail == None):
+            self.head = self.tail = newNode
         else:
-            tempHead=self.head
-            newNode.next=tempHead
-            self.head.prev=newNode
-            self.head=newNode
+            newNode.next = self.head
+            self.head.prev = newNode
+            self.head = newNode
         self.length += 1
         return self
 
     def get(self, index):
-        if(self.length <= 0 or index >= self.length or index < 0): return None
+        if (self.length <= 0 or index >= self.length or index < 0):
+            return None
         mid = self.length // 2
         if index <= mid:
             temp = self.head
             for i in range(0, index+1, +1):
-                if i == index: return temp
-                temp = temp.next 
+                if i == index:
+                    return temp
+                temp = temp.next
         elif index > mid:
             temp = self.tail
             for i in range(self.length-1, index-1, -1):
-                if i == index: return temp
+                if i == index:
+                    return temp
                 temp = temp.prev
 
     def set(self, index, val):
@@ -83,9 +88,12 @@ class DLL:
         return self
 
     def insert(self, index, val):
-        if index < 0 or index > self.length: return None
-        elif index == 0: self.unshift(val)
-        elif index == self.length: self.push(val)
+        if index < 0 or index > self.length:
+            return None
+        elif index == 0:
+            self.unshift(val)
+        elif index == self.length:
+            self.push(val)
         else:
             node = Node(val)
             oldPrevNode = self.get(index-1)
@@ -95,12 +103,15 @@ class DLL:
             oldPrevNode.next = node
             oldNextNode.prev = node
             self.length += 1
-        return self 
+        return self
 
     def remove(self, index):
-        if index < 0 or index >= self.length: return None
-        elif index == 0: return self.shift()
-        elif index == self.length-1: return self.pop()
+        if index < 0 or index >= self.length:
+            return None
+        elif index == 0:
+            return self.shift()
+        elif index == self.length-1:
+            return self.pop()
         else:
             prevNode = self.get(index-1)
             remNode = prevNode.next
@@ -109,22 +120,22 @@ class DLL:
             remNode.next = None
             self.length -= 1
 
-
     def traverse(self):
-        if self.length == 0: return None
+        if self.length == 0:
+            return None
         else:
             current = self.head
-            while(current):
+            while (current):
                 print(current.val)
                 current = current.next
-        
+
 
 dll = DLL()
 
 # --------------- Push test cases ---------------
-# dll.push(3)
-# dll.push(4)
-# dll.push(5)
+dll.push(3)
+dll.push(4)
+dll.push(5)
 # print(dll.tail.prev.prev.val)
 
 # --------------- Pop test cases ---------------
@@ -140,10 +151,8 @@ dll = DLL()
 # print(dll.head)
 
 # --------------- UnShift test cases ---------------
-# print(dll.unshift(5).head.val)
-# print(dll.unshift(6).head.val)
-# print(dll.unshift(7).head.val)
-# print(dll.length)
+print(dll.unshift(6).head.val)
+print(dll.length)
 
 # --------------- Get test cases ---------------
 # dll.push("hi")
