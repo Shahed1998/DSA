@@ -1,20 +1,14 @@
 def removeDuplicates(nums):
-    i = j = 0
-    obj = {}
+    i = 0
 
-    for i in range(0, len(nums)):
-        el = nums[i]
+    for j in range(len(nums)):
+        if i == 0 or nums[i-1] != nums[j]:
+            nums[i] = nums[j]
+            i += 1
 
-        if el not in obj:
-            obj[el] = 1
-            nums[j] = el
-            j+=1
-        i+=1
-
-    # print(nums)
-    return j
+    return i
 
 
 
-print(removeDuplicates([0,1,2,1,2,3,1,5]))
+print(removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
 
