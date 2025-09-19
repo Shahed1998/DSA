@@ -1,58 +1,74 @@
-class CircularQueue:
-    def __init__(self, capacity):
-        self.arr = [None] * capacity # Defined Queue size
-        self.front = 0
-        self.rear = -1
-        self.capacity = capacity
+class MyCircularQueue:
+
+    def __init__(self, k: int):
+        self.arr = [None] * k
+        self.first = 0
+        self.last = -1
         self.size = 0
+        self.capacity = k
 
-    def push(self, val):
+    def enQueue(self, value: int) -> bool:
 
-        if self.size >= self.capacity:  return print("Queue is full")
+        if self.size >= self.capacity: return False
 
-        self.rear = (self.rear + 1) % self.capacity
-        self.arr[self.rear] = val
+        self.last = (self.last + 1) % self.capacity
+        self.arr[self.last] = value
+
         self.size += 1
 
-    def pop(self):
-        if self.size <= 0: return print("Queue is empty")
+        return True
 
-        tmp = self.arr[self.front]
-        self.arr[self.front] = None
+    def deQueue(self) -> bool:
 
-        self.front = (self.front + 1) % self.capacity
+        if self.size <= 0: return False
+
+        self.arr[self.first] = None
+
+        self.first = (self.first + 1) % self.capacity
+
         self.size -= 1
 
-        return tmp
-    
-    def first(self): return self.arr[self.front]
+        return True
 
-# --------------------------------------------------------------------------------------------------
-# Test cases 
-# --------------------------------------------------------------------------------------------------
+    def Front(self) -> int:
+        if self.isEmpty(): return -1 
+        return self.arr[self.first]
 
-cq = CircularQueue(5)
-cq.push(1)
-cq.push(2)
-cq.push(3)
-cq.push(4)
-cq.push(5)
-cq.pop()
-cq.push(6)
-cq.pop()
-cq.push(7)
-cq.pop()
-cq.push(8)
-cq.pop()
-cq.push(9)
-cq.pop()
-cq.push(10)
-cq.push(11)
-cq.pop()
-cq.pop()
-cq.pop()
-cq.pop()
-cq.pop()
-cq.pop()
-# print(cq.arr)
-# print(cq.first())
+    def Rear(self) -> int:
+        if self.isEmpty(): return -1 
+        return self.arr[self.last]
+
+    def isFull(self) -> bool: return self.size >= self.capacity 
+ 
+    def isEmpty(self) -> bool: return self.size <= 0
+        
+# -------------------------------------------------------------------------------------
+# Test Case 01 
+# -------------------------------------------------------------------------------------
+# obj = MyCircularQueue(3)
+# print(obj.enQueue(7))
+# print(obj.deQueue())
+# print(obj.Front())
+# print(obj.deQueue())
+# print(obj.Front())
+# print(obj.Rear())
+# print(obj.enQueue(0))
+# print(obj.isFull())
+# print(obj.deQueue())
+# print(obj.Rear())
+# print(obj.enQueue(3))
+
+# -------------------------------------------------------------------------------------
+# Test Case 02
+# -------------------------------------------------------------------------------------
+# obj = MyCircularQueue(3) #null
+# print(obj.enQueue(1)) #true
+# print(obj.enQueue(2)) #true
+# print(obj.enQueue(3)) #true
+# print(obj.enQueue(4)) #false
+# print(obj.Rear()) #3
+# print(obj.isFull()) #true
+# print(obj.deQueue()) #true
+# print(obj.enQueue(4)) #true
+# print(obj.Rear()) #4
+
