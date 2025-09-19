@@ -22,6 +22,8 @@ class MyCircularQueue:
 
         if self.size <= 0: return False
 
+        self.arr[self.first] = None
+
         self.first = (self.first + 1) % self.capacity
 
         self.size -= 1
@@ -33,6 +35,7 @@ class MyCircularQueue:
         return self.arr[self.first]
 
     def Rear(self) -> int:
+        if self.isEmpty(): return -1 
         return self.arr[self.last]
 
     def isFull(self) -> bool: return self.size >= self.capacity 
