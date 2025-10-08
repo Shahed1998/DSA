@@ -5,6 +5,21 @@ class Solution:
             elif nums[i] > target: return -1
 
         return -1
+    
+    def BinarySearch(self, nums, target):
+        front = 0
+        rear = len(nums)-1
+
+        while front <= rear:
+            mid = front + (rear-front) // 2
+
+            if nums[mid] == target: return mid
+
+            elif nums[mid] < target: front = mid + 1
+
+            elif nums[mid] > target: rear = mid - 1  
+
+        return -1
 
 
 
