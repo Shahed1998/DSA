@@ -1,0 +1,17 @@
+LeetCode Top 150
+
+Total Problem-set: Easy: 40 | Medium: 92 | Hard: 18
+
+--------------------------------------------------------------------------------
+Estimated Timeline
+
+14 Feb, 2026 - 30 Apr, 2026: Solve Easy Problems
+01 Apr, 2026 - 31 Aug, 2026: Solve Medium Problems
+01 Sep, 2026 - 31 Oct, 2026: Solve Hard Problems
+
+--------------------------------------------------------------------------------
+* Note: Try to solve the problems, and revise theories along with it 
+* Note: Revise all the previous solved problems per week
+
+
+	 
