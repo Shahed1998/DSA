@@ -3,8 +3,6 @@ class Solution:
         
         if needle == "": return 0
 
-
-
         for i in range(len(haystack)-len(needle)+1):
             count = 0
             for j in range(len(needle)):
