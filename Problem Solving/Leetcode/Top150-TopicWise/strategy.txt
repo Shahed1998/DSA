@@ -1,3 +1,0 @@
-* Take a topic and solve all of it in Leetcode -> Target pattern recognition
-* After 1-2 weeks revise the solutions again
-* Start with Sliding window, Matrix,..........Array/strings

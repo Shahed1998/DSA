@@ -1,0 +1,15 @@
+Per New topic 
+
+Easy: 12
+Medium: 24
+Hard: 4
+
+After Finishing a new pattern, all previous topics
+
+Easy: 2
+Medium: 16
+Hard: 2
+
+For example: After Finishing sliding window, do arrays and strings again
+
+The topics should be followed like Leetcode Top 150
