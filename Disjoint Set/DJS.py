@@ -18,9 +18,6 @@ class Solution:
         rootX = self.find(x)
         rootY = self.find(y)
 
-        print(rootX, rootY)
-        print(self.djs)
-
         if(rootX != rootY):
             self.djs[rootY] = rootX
         else:
@@ -32,10 +29,10 @@ class Solution:
             
 
 s = Solution(4)
-# print(s.find(3))
+
 s.union(0,1)
 s.union(1,2)
-# s.union(2,3)
-# s.union(3,0)
-# s.Print()
+s.union(2,3)
+s.union(3,0)
+
 
