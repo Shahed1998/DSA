@@ -17,4 +17,4 @@ class Solution:
  
 
 s = Solution()
-print(s.increasingTriplet([2147483649, 5, 2, 2147483647,1,4,2]))
+print(s.increasingTriplet([ 5, 2, 2147483647,1,4,2, 2147483649]))

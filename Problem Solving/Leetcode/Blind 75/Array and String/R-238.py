@@ -68,4 +68,4 @@ class Solution:
 s = Solution()
 # s.productExceptSelf(nums = [-1,1,0,-3,3])
 # s.productExceptSelf(nums = [1,2,3,4])
-print(s.productExceptSelf(nums = [10,6,4,2]))
+print(s.productExceptSelf(nums = [1,2,3,4]))

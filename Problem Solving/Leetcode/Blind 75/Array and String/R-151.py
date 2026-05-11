@@ -7,13 +7,15 @@ class Solution:
 
         for i in range(len(s)-1, -1, -1):
 
-            if s[i] != ' ' and tracker == None:
-                tracker = i
+            # setting the last character of a valid word
+            if s[i] != ' ' and tracker == None: tracker = i  
 
+            # if a space occurs and the tracker is indicating then the end of the word reached, so save it
             if s[i] == ' ' and tracker != None:
                 s_arr.append(s[i+1: tracker+1])
                 tracker = None
 
+            # edge case for the last word if the tracker is not null, there there is word or else empty
             if i == 0 and tracker != None:
                 s_arr.append(s[i: tracker+1])
                 tracker = None
