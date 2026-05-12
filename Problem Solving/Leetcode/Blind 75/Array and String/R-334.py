@@ -4,6 +4,8 @@ class Solution:
         first = float('inf')
         second = float('inf')
 
+        # the first and second smallest number is extracted. And if there exists a number bigger than first and second then Triplet is found
+        # E.g. - 1 < 2 < 3
         for num in nums:
             if num <= first:
                 first = num

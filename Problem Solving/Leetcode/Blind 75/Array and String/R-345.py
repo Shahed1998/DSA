@@ -29,5 +29,5 @@ class Solution:
 
 
 s = Solution()
-s.reverseVowels(s = "IceCream")
-s.reverseVowels(s = "leetcode")
+print(s.reverseVowels(s = "IceCream"))
+print(s.reverseVowels(s = "leetcode"))
