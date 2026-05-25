@@ -3,7 +3,7 @@ class Solution:
         sNums1 = set(nums1)
         sNums2 = set(nums2)
 
-        return [list(sNums1.difference_update(sNums2)), list(sNums2.difference_update(sNums1))] #using set difference
+        return [list(sNums1 - sNums2), list(sNums2 - sNums1)] #using set difference
 
         
 
