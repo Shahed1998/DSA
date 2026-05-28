@@ -27,7 +27,6 @@ class Solution:
             if c in rows:
                 combinations += rows[c] 
 
-        print(combinations)
         return combinations
 
 
