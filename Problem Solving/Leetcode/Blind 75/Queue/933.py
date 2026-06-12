@@ -1,20 +1,41 @@
+from collections import deque
+
 class RecentCounter:
 
     def __init__(self):
-        self.requestsBefore3000 = 0
-        self.crossed3000 = 0
-        
+        self.requests = deque()
+        self.ptr = 0
+    
 
     def ping(self, t: int) -> int:
 
-        if t <= 3000:
-            self.requestsBefore3000 += 1
+        self.requests.append(t)
+        lower_bound = t - 3000
 
-        elif self.crossed3000 == 0:
-            self.requestsBefore3000 += 1
-            self.crossed3000 += 1
+        # this is an intuitive 2 pointer solution, the only problem is memory space complexity will be high on large data
+        # becase no data gets removed
+        # while self.requests[self.ptr] < lower_bound:
+        #     self.ptr += 1
+        # return (len(self.requests)-self.ptr)
 
-        return self.requestsBefore3000
+        # better approach, use linked list
+        # Physically remove elements that fall outside the 3000ms window
+        while self.requests[0] < lower_bound:
+            self.requests.popleft()
+
+
+        print(len(self.requests))
+
+        
+
+        
+            
+
+
+
+
+
+        
             
         
 
