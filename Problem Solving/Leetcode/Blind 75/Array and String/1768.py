@@ -17,4 +17,4 @@ class Solution:
 
 
 s = Solution()
-s.mergeAlternately(word1 = "abcd", word2 = "pq")
+print(s.mergeAlternately(word1 = "abcd", word2 = "pq"))
