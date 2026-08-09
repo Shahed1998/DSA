@@ -7,9 +7,7 @@ class Node:
 class BST:
     def __init__(self) -> None:
         self.root = None
-        self.depth = 0
-
-
+        
     def insert(self, val):
 
         if self.root == None:
@@ -36,10 +34,38 @@ class BST:
                 return
 
 
-    def bfs(self):
+    def depth_bfs(self):
 
         if self.root == None:
             return None
+
+        queue  = [self.root]
+        res = []
+        depth = 0
+
+        while queue:
+
+            depth += 1
+            next_queue = []
+
+            for node in queue:
+
+                res.append(node.val)
+
+                if node.left:
+                    next_queue.append(node.left)
+
+                if node.right:
+                    next_queue.append(node.right)
+
+            queue = next_queue
+
+        print(depth, res)
+
+            
+
+
+
 
 
 
@@ -47,3 +73,9 @@ bst = BST()
 
 bst.insert(4)
 bst.insert(2)
+bst.insert(6)
+bst.insert(1)
+bst.insert(3)
+bst.insert(5)
+bst.insert(7)
+bst.depth_bfs()
