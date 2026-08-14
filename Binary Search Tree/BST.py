@@ -55,7 +55,7 @@ class BST:
             return None
         queue = [self.root]
         data = []
-        while len(queue) > 0:
+        while queue:
             deq = queue.pop(0)
             data.append(deq.value)
             if deq.left:

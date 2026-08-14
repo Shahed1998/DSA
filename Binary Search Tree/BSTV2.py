@@ -60,22 +60,38 @@ class BST:
 
             queue = next_queue
 
-        print(depth, res)
+        return depth
+
+
+    def depth_dfs(self):
+
+        if self.root is None:
+            return None
+
+        stack = [(self.root, 1)]
+        max_depth = 1
+
+        while stack:
+            node, depth = stack.pop()
+
+            max_depth = max(max_depth, depth)
+
+            if node.left:
+                stack.append((node.left, depth+1))
+
+            if node.right:
+                stack.append((node.right, depth+1))
+
+        return max_depth
 
             
-
-
-
-
-
 
 bst = BST()
 
 bst.insert(4)
-bst.insert(2)
-bst.insert(6)
 bst.insert(1)
-bst.insert(3)
 bst.insert(5)
-bst.insert(7)
-bst.depth_bfs()
+bst.insert(3)
+
+print(bst.depth_bfs())
+print(bst.depth_dfs())
