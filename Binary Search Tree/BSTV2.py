@@ -20,13 +20,13 @@ class BST:
 
             if val < curr.val:
                 if curr.left == None:
-                    curr.left = Node(val)
+                    curr.left = Node(val) # type: ignore
                     return
                 else:
                     curr = curr.left
             elif val > curr.val:
                 if curr.right == None:
-                    curr.right = Node(val)
+                    curr.right = Node(val) # type: ignore
                     return
                 else:
                     curr = curr.right

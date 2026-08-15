@@ -21,14 +21,14 @@ class BST:
                 # Right side of the tree
                 if val > current.value:
                     if current.right == None:
-                        current.right = node
+                        current.right = node # type: ignore
                         break
                     else:
                         current = current.right
                 # Left side of the tree
                 elif val < current.value:
                     if current.left == None:
-                        current.left = node
+                        current.left = node # type: ignore
                         break
                     else:
                         current = current.left
