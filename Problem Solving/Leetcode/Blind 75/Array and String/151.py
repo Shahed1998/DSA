@@ -1,27 +1,23 @@
 class Solution:
     def reverseWords(self, s: str):
 
-        # Manual Split
-        s_arr = []
-        tracker = None
+        end = None
+        result = []
 
         for i in range(len(s)-1, -1, -1):
+            
+            if s[i] == ' ':
+                if end != None:
+                    result.append(s[i+1:end+1])
+                end = None
 
-            # setting the last character of a valid word
-            if s[i] != ' ' and tracker == None: tracker = i  
+            elif end == None:
+                end = i
 
-            # if a space occurs and the tracker is indicating then the end of the word reached, so save it
-            if s[i] == ' ' and tracker != None:
-                s_arr.append(s[i+1: tracker+1])
-                tracker = None
+        if end != None:
+            result.append(s[0:end+1])
 
-            # edge case for the last word if the tracker is not null, there there is word or else empty
-            if i == 0 and tracker != None:
-                s_arr.append(s[i: tracker+1])
-                tracker = None
-
-
-        return ' '.join(s_arr)
+        return ' '.join(result)
 
 
         # Automated split
