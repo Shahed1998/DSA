@@ -1,24 +1,20 @@
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        tptr = 0
-        lenOf_sMatched = 0
 
-        for sptr in s:
+        if s == "": return True
 
-            while tptr < len(t):
+        slow = 0
+    
+        for ch in t:
+            if ch == s[slow]:
+                slow += 1
 
-                if sptr == t[tptr]:
-                    lenOf_sMatched += 1
-                    tptr += 1
-                    break
+            if slow == len(s):
+                return True
 
-                tptr += 1
+        return False
 
-            if lenOf_sMatched == len(s): return True # early exit
 
-        return lenOf_sMatched == len(s)
-
-        
 
 s = Solution()
 # s.isSubsequence(s = "abc", t = "ahbgdc")

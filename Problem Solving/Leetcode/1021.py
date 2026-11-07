@@ -5,12 +5,16 @@ class Solution:
 
         for ch in s:
             if ch == '(':
-                if depth > 0:      # not the outermost '('
-                    res.append(ch)
+                if depth > 0:
+                    res.append(ch) 
                 depth += 1
             else:
                 depth -= 1
-                if depth > 0:      # not the outermost ')'
+                if depth > 0:
                     res.append(ch)
 
         return ''.join(res)
+
+
+s = Solution()
+print(s.removeOuterParentheses('(()(()))'))
