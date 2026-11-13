@@ -1,26 +1,40 @@
 class Solution:
     def pivotIndex(self, nums):
 
-        prefix_sum = 0
-        res = []
-        leftmost_zero = -1
+        # Crazy solution 
+        total = sum(nums)
+        leftSum = 0
 
-        for i in range(len(nums)):
-            res.append(prefix_sum)
-            prefix_sum += nums[i]
+        for i,n in enumerate(nums):
 
-        suffix_sum = 0
+            # Check if the left sum is equal to the right sum
+            if leftSum == total - leftSum - n:
+                return i
 
-        for i in range(len(nums)-1, -1, -1):
+            leftSum += n
 
-            res[i] -= suffix_sum
+        return -1
 
-            if res[i] == 0:
-                leftmost_zero = i
+        # prefix_sum = 0
+        # res = []
+        # leftmost_zero = -1
 
-            suffix_sum += nums[i]
+        # for i in range(len(nums)):
+        #     res.append(prefix_sum)
+        #     prefix_sum += nums[i]
 
-        return leftmost_zero
+        # suffix_sum = 0
+
+        # for i in range(len(nums)-1, -1, -1):
+
+        #     res[i] -= suffix_sum
+
+        #     if res[i] == 0:
+        #         leftmost_zero = i
+
+        #     suffix_sum += nums[i]
+
+        # return leftmost_zero
 
         
 
