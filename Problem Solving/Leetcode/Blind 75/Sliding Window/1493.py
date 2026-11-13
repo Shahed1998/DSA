@@ -1,9 +1,9 @@
 class Solution:
     def longestSubarray(self, nums):
 
-        countZero = 0
         left = 0
-        maxSize = 0
+        countZero = 0
+        maxLen = 0
 
         for right in range(len(nums)):
 
@@ -17,9 +17,9 @@ class Solution:
 
                 left += 1
 
-            maxSize = max(maxSize, right-left+1-1) # -1 because we must delete one element from the window
+            maxLen = max(maxLen, right-left)
 
-        return maxSize
+        return maxLen
             
 
             
