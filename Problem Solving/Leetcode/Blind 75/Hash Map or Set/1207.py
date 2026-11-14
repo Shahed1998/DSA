@@ -1,27 +1,21 @@
 class Solution:
     def uniqueOccurrences(self, arr):
 
-        hashmap = {}
-        value = set()
+        counter = dict()
+        occurrences = set()
 
-        for el in arr:
+        for n in arr:
+            counter[n] = counter.get(n, 0) + 1
 
-            if el not in hashmap:
-                hashmap[el] = 1
-            else:
-                hashmap[el] += 1
-
-        for key in hashmap:
+        for n in counter.values():
             
-            value_of_key = hashmap[key]
-
-            if value_of_key in value:
+            if n in occurrences:
                 return False
 
-            value.add(value_of_key)
-
+            occurrences.add(n)
 
         return True
+
 
 
         
